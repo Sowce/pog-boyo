@@ -10,7 +10,7 @@ class App extends Component {
       lastBorder: 0,
       animationDelay: 20000,
       konami: false,
-      fillColor: "#ffffff"
+      fillColor: "#ffffff",
     };
   }
 
@@ -22,19 +22,19 @@ class App extends Component {
     const distance = Math.sqrt(
       Math.pow(to.y - from.y, 2) + Math.pow(to.x - from.x, 2)
     );
-    return distance / (speed / 100);
+    return distance / ((speed * 3) / 100);
   }
 
   draw() {
-    let xOffset = 163;
-    let bOffset = 113;
-    let tOffset = 42;
+    let xOffset = 120;
+    let bOffset = 140;
+    let tOffset = 20;
     let position = {
       x: 0,
-      y: 0
+      y: 0,
     };
     let lastBorder = this.state.lastBorder;
-    let borders = [0, 1, 2, 3].filter(border => border !== lastBorder);
+    let borders = [0, 1, 2, 3].filter((border) => border !== lastBorder);
     let rng = Math.floor(Math.random() * 2);
     let border = borders[rng];
     switch (border) {
@@ -71,7 +71,7 @@ class App extends Component {
       position,
       animationDelay,
       lastBorder: border,
-      fillColor: this.randomColor()
+      fillColor: this.randomColor(),
     });
     setTimeout(() => this.draw(), animationDelay);
   }
@@ -79,7 +79,7 @@ class App extends Component {
   render() {
     return (
       <div style={this.containerStyle()}>
-        <svg
+        {/* <svg
           style={this.getImageStyle()}
           version="1.0"
           width="300.000000pt"
@@ -97,7 +97,8 @@ class App extends Component {
             <path d="M1410 445 l0 -65 30 0 c37 0 70 31 70 65 0 34 -33 65 -70 65 l-30 0 0 -65z" />
             <path d="M2060 490 c-11 -11 -20 -31 -20 -45 0 -14 9 -34 20 -45 11 -11 31 -20 45 -20 14 0 34 9 45 20 11 11 20 31 20 45 0 14 -9 34 -20 45 -11 11 -31 20 -45 20 -14 0 -34 -9 -45 -20z" />
           </g>
-        </svg>
+        </svg>*/}
+        <img src="pogchamp.png" alt="not pog" style={this.getImageStyle()} />
         <Konami>
           <input
             value={this.state.animationDelay}
@@ -124,7 +125,7 @@ class App extends Component {
     return {
       width: "100vw",
       height: "100vh",
-      background: "#171717"
+      background: "#171717",
     };
   }
 
@@ -136,7 +137,7 @@ class App extends Component {
       width: "160px",
       position: "fixed",
       transition: `left ${this.state.animationDelay}ms linear 0s, top ${this.state.animationDelay}ms linear 0s`,
-      fill: `${this.state.fillColor} !important`
+      fill: `${this.state.fillColor} !important`,
     };
   }
 }
